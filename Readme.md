@@ -1,1 +1,1 @@
-This is a basic database demo using Heroku and PostgreSQL
+This is a basic database demo using Heroku and MongoDB
