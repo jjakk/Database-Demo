@@ -1,0 +1,10 @@
+
+.block{
+  border: 1px solid black;
+  width: 400px;
+  margin: 15px;
+}
+
+.block p{
+  margin-left: 10px;
+}

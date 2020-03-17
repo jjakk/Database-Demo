@@ -1,9 +1,28 @@
 
 head
   title Database Demo
+  link(rel='stylesheet' href='css/index.css')
 
 body
   header
+    h1
+      u User Creator
   main
-    p #{data}
+    form(action='/createUser' method='POST')
+      div First name 
+        input(type='text' name='firstName')
+      br
+      div Last name 
+        input(type='text' name='lastName')
+      br
+      div Age 
+        input(type='number' name='age')
+      br
+      button(type='submit') Submit
+      ul
+        each val in users
+          div.block
+            p= 'First Name : ' + val.firstName
+            p= 'Last Name : ' + val.lastName
+            p= 'Age : ' + val.age
   footer
