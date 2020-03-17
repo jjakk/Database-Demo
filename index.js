@@ -38,4 +38,17 @@ app.post('/createUser', function(req, res){
   res.redirect('/');
 });
 
+app.post('/deleteUser', function(req, res){
+  MongoClient.connect(mongoUrl, {useUnifiedTopology: true}, function(err, db) {
+    if (err) throw err;
+    var dbo = db.db("mydb");
+    var myquery = { firstName: req.body.firstName, lastName: req.body.lastName, age: req.body.age };
+    dbo.collection("customers").deleteOne(myquery, function(err, obj) {
+      if (err) throw err;
+      console.log("1 document deleted");
+      db.close();
+    });
+  });
+});
+
 console.log('Running on port ' + port);
