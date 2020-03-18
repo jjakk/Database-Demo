@@ -1,11 +1,14 @@
 
-deleteBlock(firstName, lastName, age){
-  var xhr = new XMLHttpRequest();
-  xhr.open("POST", '/deleteUser', true);
-  xhr.setRequestHeader('Content-Type', 'application/json');
-  xhr.send(JSON.stringify({
+function deleteBlock(firstName, lastName, age){
+  fetch('/deleteUser', {
+    method: 'POST',
+    headers: {
+        'Content-Type': 'application/json'
+    },
+    body: JSON.stringify({
       firstName: firstName,
       lastName: lastName,
       age: age
-  }));
+    })
+  });
 }
