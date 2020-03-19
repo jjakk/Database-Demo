@@ -10,8 +10,28 @@
   width: 400px;
   margin: 15px;
   padding: 10px;
+  padding-bottom: 20px;
 }
 
-.block p{
+.block div{
+  display: inline;
+  font-size: 16px;
+  margin-left: 10px;
+}
+
+.block input{
+  display: inline;
+  margin-top: 15px;
+  border: none;
+  cursor: default;
+}
+
+.block input:focus{
+  outline: none;
+}
+
+.block button{
+  display: block;
+  margin-top: 15px;
   margin-left: 10px;
 }

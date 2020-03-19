@@ -50,7 +50,7 @@ app.post('/deleteUser', function(req, res){
       db.close();
     });
   });
-  res.send('delete user');
+  res.redirect('/');
 });
 
 console.log('Running on port ' + port);

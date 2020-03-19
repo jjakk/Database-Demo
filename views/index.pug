@@ -19,12 +19,18 @@ body
         input(type='number' name='age')
       br
       button(type='submit') Submit
-      ul
-        each val in users
-          div.block
-            p= 'First Name : ' + val.firstName
-            p= 'Last Name : ' + val.lastName
-            p= 'Age : ' + val.age
-            button(onclick='deleteBlock('+firstName+', '+lastName+','+age+')') Delete
+    ul
+      each val in users
+        form.block(action='/deleteUser' method='POST')
+          div Age : 
+            input(name='firstName' value=(val.firstName) readonly)
+          br
+          div Last Name : 
+            input(name='lastName' value=(val.lastName) readonly)
+          br
+          div Age : 
+            input(name='age' value=(val.age) readonly)
+          br
+          button(type='submit') Delete
   footer
     script(src='js/index.js')
