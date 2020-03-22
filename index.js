@@ -4,7 +4,7 @@ const pug = require('pug');
 const MongoClient = require('mongodb').MongoClient;
 const app = express();
 const port = process.env.PORT || 8000;
-const mongoUrl = "mongodb://localhost:27017/mydb";
+const mongoUrl = process.env.PORT ? 'mongodb://heroku_l072c0x4:998o4usco7cm2cmplqfql26bc0@ds139534.mlab.com:39534/heroku_l072c0x4' : "mongodb://localhost:27017/mydb";
 
 app.set('views', __dirname + '/views');
 app.set('view engine', 'pug');
