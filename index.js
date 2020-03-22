@@ -42,7 +42,6 @@ app.post('/deleteUser', function(req, res){
   MongoClient.connect(mongoUrl, {useUnifiedTopology: true}, function(err, db) {
     if (err) throw err;
     var dbo = db.db("mydb");
-    console.log(req.body);
     var myquery = { firstName: req.body.firstName, lastName: req.body.lastName, age: req.body.age };
     dbo.collection("users").deleteOne(myquery, function(err, obj) {
       if (err) throw err;
