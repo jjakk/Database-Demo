@@ -5,6 +5,7 @@ const MongoClient = require('mongodb').MongoClient;
 const app = express();
 const port = process.env.PORT || 8000;
 const mongoUrl = process.env.MONGODB_URI || "mongodb://localhost:27017/mydb";
+console.log(mongoUrl);
 
 app.set('views', __dirname + '/views');
 app.set('view engine', 'pug');
