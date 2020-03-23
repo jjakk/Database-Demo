@@ -4,7 +4,7 @@ const pug = require('pug');
 const MongoClient = require('mongodb').MongoClient;
 const app = express();
 const port = process.env.PORT || 8000;
-const mongoUrl = process.env.MONGOLAB_URI || "mongodb://localhost:27017/mydb";
+const mongoUrl = process.env.MONGODB_URI || "mongodb://localhost:27017/mydb";
 
 app.set('views', __dirname + '/views');
 app.set('view engine', 'pug');
