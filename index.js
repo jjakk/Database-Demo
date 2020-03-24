@@ -15,7 +15,7 @@ app.use(bodyParser.urlencoded({extended: true}));
 app.get('/', function(req, res){
   MongoClient.connect(mongoUrl, {useUnifiedTopology: true}, function(err, db) {
     if (err) throw err;
-    var dbo = db.db("mydb");
+    var dbo = db.db("heroku_nfc0vg8q");
     var query = {};
     dbo.collection("users").find(query).toArray(function(err, result) {
       if (err) throw err;
@@ -28,7 +28,7 @@ app.get('/', function(req, res){
 app.post('/createUser', function(req, res){
   MongoClient.connect(mongoUrl, {useUnifiedTopology: true}, function(err, db) {
     if (err) throw err;
-    var dbo = db.db("mydb");
+    var dbo = db.db("heroku_nfc0vg8q");
     var myobj = { firstName: req.body.firstName, lastName: req.body.lastName, age: req.body.age };
     dbo.collection("users").insertOne(myobj, function(err, res) {
       if (err) throw err;
@@ -41,7 +41,7 @@ app.post('/createUser', function(req, res){
 app.post('/deleteUser', function(req, res){
   MongoClient.connect(mongoUrl, {useUnifiedTopology: true}, function(err, db) {
     if (err) throw err;
-    var dbo = db.db("mydb");
+    var dbo = db.db("heroku_nfc0vg8q");
     var myquery = { firstName: req.body.firstName, lastName: req.body.lastName, age: req.body.age };
     dbo.collection("users").deleteOne(myquery, function(err, obj) {
       if (err) throw err;
