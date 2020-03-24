@@ -4,7 +4,8 @@ const pug = require('pug');
 const MongoClient = require('mongodb').MongoClient;
 const app = express();
 const port = process.env.PORT || 8000;
-const mongoUrl = process.env.MONGODB_URI || "mongodb://localhost:27017/mydb";
+const mongoUrl = process.env.MONGODB_URI || 'mongodb://localhost:27017/mydb';
+const dbName = process.env.MONGODB_URI ? 'heroku_nfc0vg8q' : 'mydb';
 
 app.set('views', __dirname + '/views');
 app.set('view engine', 'pug');
@@ -15,9 +16,9 @@ app.use(bodyParser.urlencoded({extended: true}));
 app.get('/', function(req, res){
   MongoClient.connect(mongoUrl, {useUnifiedTopology: true}, function(err, db) {
     if (err) throw err;
-    var dbo = db.db("heroku_nfc0vg8q");
+    var dbo = db.db(dbName);
     var query = {};
-    dbo.collection("users").find(query).toArray(function(err, result) {
+    dbo.collection('users').find(query).toArray(function(err, result) {
       if (err) throw err;
       res.render('index.pug', {users: result});
       db.close();
@@ -28,9 +29,9 @@ app.get('/', function(req, res){
 app.post('/createUser', function(req, res){
   MongoClient.connect(mongoUrl, {useUnifiedTopology: true}, function(err, db) {
     if (err) throw err;
-    var dbo = db.db("heroku_nfc0vg8q");
+    var dbo = db.db(dbName);
     var myobj = { firstName: req.body.firstName, lastName: req.body.lastName, age: req.body.age };
-    dbo.collection("users").insertOne(myobj, function(err, res) {
+    dbo.collection('users').insertOne(myobj, function(err, res) {
       if (err) throw err;
       db.close();
     });
@@ -41,11 +42,11 @@ app.post('/createUser', function(req, res){
 app.post('/deleteUser', function(req, res){
   MongoClient.connect(mongoUrl, {useUnifiedTopology: true}, function(err, db) {
     if (err) throw err;
-    var dbo = db.db("heroku_nfc0vg8q");
+    var dbo = db.db(dbName);
     var myquery = { firstName: req.body.firstName, lastName: req.body.lastName, age: req.body.age };
-    dbo.collection("users").deleteOne(myquery, function(err, obj) {
+    dbo.collection('users').deleteOne(myquery, function(err, obj) {
       if (err) throw err;
-      console.log("1 document deleted", myquery);
+      console.log('1 document deleted', myquery);
       db.close();
     });
   });
